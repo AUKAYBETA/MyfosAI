@@ -1,0 +1,485 @@
+:root {
+  --accent: #007bff;
+  --accent-soft: #2dc3ff;
+  --bg: #f9fbfd;
+  --surface: rgba(255,255,255,0.85);
+  --glass: rgba(255,255,255,0.55);
+  --border: rgba(0,0,0,0.07);
+  --text: #1a1c20;
+  --muted: #667085;
+  --radius: 18px;
+  --shadow-soft: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-strong: 0 8px 35px rgba(0,0,0,0.12);
+  --font: "Inter","SF Pro Display",system-ui,sans-serif;
+}
+
+/* ===== GLOBAL ===== */
+html,body{
+  margin:0;padding:0;
+  height:100%;
+  font-family:var(--font);
+  color:var(--text);
+  background:var(--bg);
+  scroll-behavior:smooth;
+}
+*{transition:all 0.25s ease}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-thumb{
+  background:rgba(0,0,0,0.1);
+  border-radius:6px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background:rgba(0,0,0,0.25);
+}
+
+/* ===================================
+   HOME PAGE — COMPANION CARDS
+   =================================== */
+.home{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:60px 20px;
+  background:linear-gradient(180deg,#fdfefe 0%,#eef3f8 100%);
+  text-align:center;
+}
+.home h1{
+  font-size:2.6rem;
+  background:linear-gradient(90deg,#007bff,#00bcd4);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:12px;
+}
+.home p{
+  color:var(--muted);
+  font-size:1.05rem;
+  margin-bottom:40px;
+}
+.companion-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:35px;
+  width:100%;
+  max-width:1100px;
+  padding:10px;
+}
+
+/* ===== Card ===== */
+.card{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:var(--surface);
+  box-shadow:var(--shadow-soft);
+  backdrop-filter:blur(12px);
+  cursor:pointer;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-strong);
+}
+
+/* Cover image */
+.cover-image{
+  width:100%;
+  height:220px;
+  background-size:cover;
+  background-position:center;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+  box-shadow:inset 0 -35px 40px rgba(0,0,0,0.1);
+}
+
+/* Info section */
+.info{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:20px 22px;
+}
+.info img{
+  width:78px;height:78px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #e8ebef;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+.text-info{
+  text-align:left;
+}
+.text-info h2{
+  margin:0;
+  color:var(--accent);
+  font-size:1.25em;
+}
+.text-info p{
+  margin:4px 0;
+  color:var(--muted);
+  font-size:0.95em;
+}
+
+/* ===================================
+   CHAT PAGE — MODERN LIGHT THEME
+   =================================== */
+.chat-app{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  background:linear-gradient(180deg,#fefefe 0%,#f3f6fa 100%);
+}
+
+/* Header */
+.chat-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 24px;
+  border-bottom:1px solid var(--border);
+  background:var(--surface);
+  backdrop-filter:blur(12px);
+  box-shadow:var(--shadow-soft);
+  z-index:10;
+}
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.chat-header img.avatar{
+  width:56px;height:56px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #d5d9dd;
+}
+.chat-header h1{
+  margin:0;font-size:1.25em;color:var(--accent);
+}
+.chat-header p{
+  margin:0;font-size:.9em;color:var(--muted);
+}
+.back-btn{
+  background:rgba(0,0,0,0.05);
+  border:none;
+  color:var(--accent);
+  border-radius:8px;
+  font-size:22px;
+  padding:6px 12px;
+  cursor:pointer;
+}
+.back-btn:hover{background:rgba(0,0,0,0.1)}
+
+/* Intro image banner */
+.intro-image{
+  width:100%;
+  height:38vh;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:contain;
+  border-bottom:1px solid var(--border);
+  background-color:#f5f7fa;
+  animation:fadeSlide 1s ease;
+}
+@keyframes fadeSlide{
+  from{opacity:0;transform:translateY(-10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Chat box */
+.chat-box{
+  flex:1;
+  padding:24px 22px;
+  overflow-y:auto;
+  scroll-behavior:smooth;
+}
+
+/* Messages */
+.user-message,.bot-message{
+  display:flex;width:100%;margin-bottom:18px;
+}
+.user-message{justify-content:flex-end;}
+.bot-message{justify-content:flex-start;}
+
+.bubble{
+  padding:12px 18px;
+  border-radius:16px;
+  max-width:75%;
+  font-size:15px;
+  line-height:1.5;
+  box-shadow:0 3px 12px rgba(0,0,0,0.07);
+}
+.user-message .bubble{
+  background:linear-gradient(135deg,#007bff,#00bcd4);
+  color:#fff;
+}
+.bot-message .bubble{
+  background:#fff;
+  color:var(--text);
+  border:1px solid rgba(0,0,0,0.05);
+}
+
+/* Generated image */
+.generated-image{
+  width:95%;
+  max-width:540px;
+  display:block;
+  margin:25px auto;
+  border-radius:20px;
+  object-fit:contain;
+  background:#fff;
+  box-shadow:0 10px 35px rgba(0,0,0,0.1);
+  animation:fadeUp .8s ease;
+  transition:transform .4s,box-shadow .4s;
+}
+.generated-image:hover{
+  transform:scale(1.03);
+  box-shadow:0 14px 45px rgba(0,0,0,0.2);
+}
+
+/* Input area */
+.input-area{
+  display:flex;
+  align-items:center;
+  padding:14px 18px;
+  border-top:1px solid var(--border);
+  background:var(--surface);
+  backdrop-filter:blur(10px);
+  position:sticky;
+  bottom:0;
+  z-index:20;
+}
+#user-input{
+  flex:1;
+  padding:12px 14px;
+  border:none;
+  border-radius:10px;
+  outline:none;
+  font-size:15px;
+  color:var(--text);
+  background:rgba(0,0,0,0.04);
+}
+#user-input:focus{background:rgba(0,0,0,0.07)}
+#send-btn{
+  background:linear-gradient(135deg,#007bff,#00bcd4);
+  border:none;
+  border-radius:10px;
+  margin-left:10px;
+  padding:10px 16px;
+  font-size:18px;
+  color:#fff;
+  cursor:pointer;
+}
+#send-btn:hover{transform:scale(1.05)}
+
+/* Loading bar */
+.image-loading{
+  width:90%;
+  margin:24px auto;
+  padding:22px;
+  border-radius:18px;
+  background:rgba(0,123,255,0.08);
+  text-align:center;
+  box-shadow:0 0 25px rgba(0,0,0,0.08);
+}
+.progress-bar{
+  width:100%;height:8px;
+  background:rgba(0,0,0,0.08);
+  border-radius:6px;
+  overflow:hidden;margin-top:10px;
+}
+.progress{
+  width:0%;height:100%;
+  background:linear-gradient(90deg,#007bff,#00bcd4);
+  transition:width .4s ease;
+}
+.progress-text{
+  font-size:14px;
+  margin-bottom:6px;
+  color:var(--text);
+}
+
+/* Animations */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+/* =============================
+   GLOBAL THEME — Light, Modern
+   ============================= */
+:root {
+  --accent: #007bff;
+  --accent-light: #00bcd4;
+  --bg: #f9fbff;
+  --surface: #ffffff;
+  --text: #1a1c20;
+  --muted: #667085;
+  --border: rgba(0,0,0,0.08);
+  --radius: 20px;
+  --shadow-soft: 0 4px 14px rgba(0,0,0,0.06);
+  --shadow-strong: 0 10px 35px rgba(0,0,0,0.12);
+  --font: "Inter","SF Pro Display",system-ui,sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,h2,h3,p { margin: 0; }
+
+/* =============================
+   HOMEPAGE LAYOUT
+   ============================= */
+.home {
+  min-height: 100vh;
+  padding: 60px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg,#fdfefe 0%,#f2f6fa 100%);
+  text-align: center;
+}
+
+.title {
+  font-size: 2.8rem;
+  background: linear-gradient(90deg,var(--accent),var(--accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 45px;
+}
+
+/* =============================
+   COMPANION GRID
+   ============================= */
+.companion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 38px;
+  width: 100%;
+  max-width: 1150px;
+  margin: auto;
+  padding: 0 10px;
+}
+
+/* =============================
+   CARD DESIGN
+   ============================= */
+.card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+  animation: fadeUp 0.6s ease both;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-strong);
+}
+
+/* Cover image (top of card) */
+.cover-image {
+  width: 100%;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.card:hover .cover-image {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+/* =============================
+   INFO SECTION
+   ============================= */
+.info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  background: #fff;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e8ebef;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.text-info {
+  text-align: left;
+  flex: 1;
+}
+
+.text-info h2 {
+  color: var(--accent);
+  font-size: 1.25em;
+  margin: 0;
+}
+
+.text-info .role {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin: 3px 0 4px;
+}
+
+.text-info small {
+  color: #9aa3b5;
+  font-size: 0.85em;
+}
+
+/* =============================
+   HOVER EFFECTS
+   ============================= */
+.card:hover .avatar {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(0,123,255,0.3);
+  transition: 0.35s;
+}
+
+/* =============================
+   ANIMATIONS
+   ============================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================
+   RESPONSIVE DESIGN
+   ============================= */
+@media (max-width: 768px) {
+  .title { font-size: 2rem; }
+  .cover-image { height: 180px; }
+  .info { flex-direction: column; text-align: center; }
+  .avatar { width: 90px; height: 90px; }
+  .text-info h2 { font-size: 1.15em; }
+}
