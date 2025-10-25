@@ -13,6 +13,34 @@
   --gold2:#d4af37;
   --accent:#00b09b;
 }
+  /* ===== TERMS AGREEMENT TEXT ===== */
+#togglecondition {
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: #555;
+  text-align: center;
+  line-height: 1.5;
+  background: rgba(255, 215, 0, 0.07);
+  border-radius: 10px;
+  padding: 10px 14px;
+  width: 95%;
+  max-width: 360px;
+  transition: 0.3s ease;
+  border: 1px solid rgba(212,175,55,0.25);
+}
+
+#togglecondition a {
+  color: var(--gold2);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+#togglecondition:hover {
+  background: rgba(255, 215, 0, 0.12);
+  transform: scale(1.02);
+  box-shadow: 0 2px 12px rgba(212,175,55,0.2);
+}
+
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
 body{
   background:linear-gradient(135deg,#fff,#f2f2f2);
@@ -111,10 +139,9 @@ small{color:#777;}
   <div class="toggle" id="toggleText">Don’t have an account? Sign up</div>
 <div class="toggle" id="togglecondition">
   By continuing, you agree to the 
-  <a href="condition.html" target="_blank" style="color:#b8860b; text-decoration:underline;">
-    terms and conditions
-  </a>.
+  <a href="condition.html" target="_blank">terms and conditions</a>.
 </div>
+
 
   <div id="msg"></div>
 </div>
@@ -321,5 +348,6 @@ if (localStorage.getItem("user")) {
 
 </body>
 </html>
+
 
 
