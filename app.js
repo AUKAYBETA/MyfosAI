@@ -1,16 +1,12 @@
 // === Imports ===
 import { HfInference } from "https://cdn.jsdelivr.net/npm/@huggingface/inference@2.6.1/+esm";
 
-// === API Keys (TEMPORARY: Replace these placeholders with your actual keys) ===
-// 🛑 WARNING: This exposes your keys publicly in the browser! 
-// This is the only way to make it "just work" on a static GitHub Page.
+// === API Keys (WARNING: These keys are now PUBLIC) ===
+// I have inserted the keys you provided.
+// 🛑 SECURITY WARNING: This code runs client-side (in the browser),
+// which means these keys are visible to anyone who views your source code.
 const GEMINI_KEY = "AIzaSyAw1Hfy8nskApgSOEksupe-CcVaCxDMfRI";
-const HF_KEY = "PASTE_YOUR_PUBLIC_HUGGING_FACE_API_KEY_HERE"; 
-
-if (GEMINI_KEY === "PASTE_YOUR_GEMINI_API_KEY_HERE" || HF_KEY === "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") {
-    console.error("Please replace the placeholder API keys in script.js with your actual keys.");
-}
-
+const HF_KEY = "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";
 const hf = new HfInference(HF_KEY);
 
 // === DOM Elements ===
