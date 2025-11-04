@@ -3,7 +3,7 @@ import { HfInference } from "https://cdn.jsdelivr.net/npm/@huggingface/inference
 
 // === API Keys ===
 const GEMINI_KEY = "AIzaSyAw1Hfy8nskApgSOEksupe-CcVaCxDMfRI";
-const HF_KEY = "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";
+const HF_KEY = "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";
 const hf = new HfInference(HF_KEY);
 
 // === DOM Elements ===
@@ -165,6 +165,7 @@ Soft lighting, detailed textures, natural emotion, 4K composition.
     console.error(err);
   }
 }
+
 
 
 
