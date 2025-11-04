@@ -1,9 +1,16 @@
 // === Imports ===
 import { HfInference } from "https://cdn.jsdelivr.net/npm/@huggingface/inference@2.6.1/+esm";
 
-// === API Keys ===
+// === API Keys (TEMPORARY: Replace these placeholders with your actual keys) ===
+// 🛑 WARNING: This exposes your keys publicly in the browser! 
+// This is the only way to make it "just work" on a static GitHub Page.
 const GEMINI_KEY = "AIzaSyAw1Hfy8nskApgSOEksupe-CcVaCxDMfRI";
-const HF_KEY = "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";
+const HF_KEY = "PASTE_YOUR_PUBLIC_HUGGING_FACE_API_KEY_HERE"; 
+
+if (GEMINI_KEY === "PASTE_YOUR_GEMINI_API_KEY_HERE" || HF_KEY === "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") {
+    console.error("Please replace the placeholder API keys in script.js with your actual keys.");
+}
+
 const hf = new HfInference(HF_KEY);
 
 // === DOM Elements ===
@@ -165,8 +172,3 @@ Soft lighting, detailed textures, natural emotion, 4K composition.
     console.error(err);
   }
 }
-
-
-
-
-
